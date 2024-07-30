@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contagem Regressiva</title>
+  <style>
+    /* Estilos CSS */
+    body {
+      background-color: #000; /* Fundo preto */
+      color: #fff; /* Letras brancas */
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    #timer {
+      font-size: 48px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="timer">16:00:00:00</div>
+  <script>
+    // Código JavaScript
+    var dias = 16;
+    var horas = 0;
+    var minutos = 2;
+    var segundos = 0;
+    var intervalo = setInterval(function() {
+      if (segundos > 0) {
+        segundos--;
+      } else if (minutos > 0) {
+        minutos--;
+        segundos = 59;
+      } else if (horas > 0) {
+        horas--;
+        minutos = 59;
+        segundos = 59;
+      } else if (dias > 0) {
+        dias--;
+        horas = 23;
+        minutos = 59;
+        segundos = 59;
+      } else {
+        clearInterval(intervalo);
+      }
+      document.getElementById("timer").innerHTML = `${dias.toString().padStart(2, '0')}:${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+    }, 1000);
+  </script>
+</body>
+</html>
